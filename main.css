@@ -13,14 +13,11 @@ body {
   background-size: cover;
 }
 
-.app-wrap {
-}
-
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 15px 15px;
+  padding: 150px 15px 15px;
 }
 
 header input {
