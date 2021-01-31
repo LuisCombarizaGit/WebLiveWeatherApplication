@@ -1,18 +1,23 @@
+// Api key and url put into constant for easy manipulatio
 const api = {
   key: "9241a84639ec50932c0a1c8d3b3e9434",
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
+// What ever the user types becomes the query for API
 const searchbox = document.querySelector(".search-box");
 searchbox.addEventListener("keypress", setQuery);
 
+// Function to check once user has pressed (key 13 "Enter") send to query
 function setQuery(evt) {
   if (evt.keyCode == 13) {
     getResults(searchbox.value);
+    getImages(searchbox.value);
     console.log(searchbox.value);
   }
 }
 
+// Call API (fetch) with query done by user input
 function getResults(query) {
   fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then((weather) => {
@@ -21,8 +26,8 @@ function getResults(query) {
     .then(displayResults);
 }
 
+// Retrieve data from .json received from API and manipulate UI
 function displayResults(weather) {
-  console.log(weather);
   let city = document.querySelector(".location .city");
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
